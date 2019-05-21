@@ -1,12 +1,8 @@
-import java.security.SecureRandom
-import java.util.stream.Collectors;
+import java.util.stream.Collectors
 
-public class KnapsackAlgorithm {
+class KnapsackAlgorithm {
 
-    private Evaluator valueToWeightEvaluator = new Evaluator()
-    private SecureRandom secureRandom = new SecureRandom()
-
-    public Knapsack packKnapsack(List<Item> items, Knapsack knapsack) { // return knapsack with best items
+    Knapsack packKnapsack(List<Item> items, Knapsack knapsack) { // return knapsack with best items
         Knapsack best = knapsack
 
         while (best.canAdd(items) && !best.isFull()) {
@@ -24,20 +20,20 @@ public class KnapsackAlgorithm {
 
     private List<Knapsack> generateNeighbors(List<Item> items, Knapsack knapsack) {
         return items.stream()
-                .map({
+                .map {
             if (knapsack.willExceedSize(it))
-                return null;
+                return null
             else
                 return knapsack.copyWithItem(it)
 
-        })
-                .filter({ Objects.nonNull(it) })
+        }
+        .filter{ Objects.nonNull(it) }
                 .collect(Collectors.toList())
     }
 
     private List<Knapsack> sortByHeuristicEvaluate(List<Knapsack> items) {
-        items.sort(Comparator.comparingDouble({ valueToWeightEvaluator.evaluate(it) }))
+        items.sort { it.checkValueDividedByWeight() }
         items = items.reverse()
-        return items;
+        return items
     }
 }

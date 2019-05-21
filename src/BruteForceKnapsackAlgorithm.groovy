@@ -4,7 +4,7 @@ class BruteForceKnapsackAlgorithm {
     List<Boolean> solution
     List<Boolean> current
 
-    public Knapsack packKnapsack(List<Item> items, Knapsack knapsack) {
+    Knapsack packKnapsack(List<Item> items, Knapsack knapsack) {
         countOfItems = items.size()
         //true - przemdioty dające najlepszą wartość , dla current przedmioty w obecnie rozważanym wyniku
         solution = new ArrayList<>(countOfItems)

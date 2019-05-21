@@ -1,8 +1,6 @@
-import java.util.stream.Collectors
+class GreedyKnapsackAlgorithm {
 
-public class GreedyKnapsackAlgorithm {
-
-    public Knapsack packKnapsack(List<Item> items, Knapsack knapsack) {
+    Knapsack packKnapsack(List<Item> items, Knapsack knapsack) {
         Integer itemsSize = items.size()
         List<ItemWithValue> itemsWithValue = new ArrayList<>();
 
@@ -10,15 +8,12 @@ public class GreedyKnapsackAlgorithm {
             itemsWithValue.add(createItemWithValue(item))
         }
 
-//        TODO nie widzi getValueToWeightRatio() jak posortowac po double?
-//       itemsWithValue.sort(Comparator.comparingDouble( {it -> it.getValueToWeightRatio()})
-
-        itemsWithValue.sort{it.getValueToWeightRatio()}
+        itemsWithValue.sort { it.getValueToWeightRatio() }
         itemsWithValue = itemsWithValue.reverse()
         System.out.println("SORTED: " + itemsWithValue + "\n")
 
         items = new ArrayList<>(itemsSize)
-        for (ItemWithValue itemWithValue : itemsWithValue){
+        for (ItemWithValue itemWithValue : itemsWithValue) {
             items.add(createItem(itemWithValue))
         }
 //jeśli nie jest pełny - waga wszystkich spakowanych przedmiotów nie równa jest pojemności plecaka
@@ -40,13 +35,13 @@ public class GreedyKnapsackAlgorithm {
     }
 
     Item createItem(ItemWithValue itemWithValue) {
-        return new Item( itemWithValue.getItem().getValue(), itemWithValue.getItem().getWeight())
+        return new Item(itemWithValue.getItem().getValue(), itemWithValue.getItem().getWeight())
     }
 
     Integer checkFreeSpace(Knapsack knapsack) {
         Integer usedCapacity = 0;
         List<Item> knapsackItems = knapsack.getItems()
-        for (Item item : knapsackItems){
+        for (Item item : knapsackItems) {
             usedCapacity = usedCapacity + item.getWeight()
         }
 

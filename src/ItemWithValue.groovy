@@ -1,30 +1,23 @@
-public class ItemWithValue {
-    private Item item
-    public double valueToWeightRatio
+class ItemWithValue {
 
-    public ItemWithValue(Item item, Double valueToWeightRatio) {
+    private Item item
+    double valueToWeightRatio
+
+    ItemWithValue(Item item, Double valueToWeightRatio) {
         this.item = item
         this.valueToWeightRatio = valueToWeightRatio
     }
 
-    public Item getItem(){
+    Item getItem() {
         return item
     }
 
-    public double getValueToWeightRatio(){
+    double getValueToWeightRatio() {
         return valueToWeightRatio
     }
 
     @Override
-    public String toString(){
+    String toString() {
         return "Item" + item.toString() + "Value: " + valueToWeightRatio;
     }
-
-//    @Override
-//    public int compareTo(ItemWithValue it1, ItemWithValue it2) {
-//        return Double.compare(it1.valueToWeightRatio, it2.valueToWeightRatio)
-//    }
-
-
-
 }
