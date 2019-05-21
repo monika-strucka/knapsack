@@ -37,6 +37,7 @@ class BruteForceKnapsackAlgorithm {
                 copySolution()
             }
             return
+
         }
 
         //rekurencja - 2 możliwości dla danego przemdiotu - albo wybieramy albo nie

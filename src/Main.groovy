@@ -27,7 +27,7 @@ static void main(String[] args) {
     println("Weight =" + bruteForceResult.checkWeight())
     println("Number of items: " + bruteForceResult.items.size())
     bruteForceResult.display()
-    }
+}
 
 private List<Item> createItems() {
     return [
